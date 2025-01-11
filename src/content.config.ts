@@ -1,5 +1,4 @@
 // https://docs.astro.build/en/guides/content-collections/#defining-collections
-
 import { z, defineCollection } from 'astro:content';
 import { docsSchema } from '@astrojs/starlight/schema';
 import { glob } from 'astro/loaders';
@@ -115,7 +114,10 @@ const gamesCollection = defineCollection({
             btnTitle: z.string(),
             btnURL: z.string(),
         }).optional(),
-              specificationsLeft: z.array(
+        gameplayMechanics: z.string().optional(),
+        strategyAndTips: z.string().optional(),
+        howToPlay: z.string().optional(),
+         specificationsLeft: z.array(
             z.object({
                 title: z.string(),
                 subTitle: z.string(),
@@ -127,29 +129,18 @@ const gamesCollection = defineCollection({
                  subTitle: z.string(),
              })
          ).optional(),
-
-        gameplayMechanics: z.string().optional(),
-        strategyAndTips: z.string().optional(),
-        howToPlay: z.string().optional(),
-         specificationsLeft: z.array(
-            z.object({
-                title: z.string(),
-                subTitle: z.string(),
-            })
-        ).optional(),
          tableData: z.array(
             z.object({
                 feature: z.array(z.string()),
                 description: z.array(z.array(z.string())),
             })
         ).optional(),
-             descriptionList: z.array(
-            z.object({
+        descriptionList: z.array(
+             z.object({
                 title: z.string(),
                 subTitle: z.string(),
-            })
+             })
         ).optional(),
-
          blueprints: z.object({
             first: image().optional(),
             second: image().optional(),
@@ -178,5 +169,3 @@ export const collections = {
   'blog': blogCollection,
   'insights': insightsCollection,
 };
-
-
