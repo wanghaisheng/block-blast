@@ -5,8 +5,8 @@ main:
   id: 5
   content: |
     Block Blast is a popular digital puzzle game that engages players through its strategic gameplay centered around an 8x8 grid. Players manipulate sets of colored blocks to clear rows or columns by filling them entirely, which promotes critical thinking and planning. Launched by Hungry Studio, the game has become notable for its blend of simplicity and depth, making it accessible to a wide audience while still challenging for seasoned gamers.
-  imgCard: "@/images/product-image-1.avif"
-  imgMain: "@/images/product-image-main-1.avif"
+  imgCard: "@/images/block-blast-card.png"
+  imgMain: "@/images/block-blast-main.png"
   imgAlt: "Screenshot from Block Blast game"
 tabs:
   - id: "tab-summary"
@@ -125,6 +125,7 @@ strategyAndTips: |
     *   Ignoring the block queue, leading to missed opportunities for optimal moves.
     *   Rushing decisions, which often results in poor placements.
     *   Leaving isolated gaps, which are difficult to fill and can obstruct gameplay.
+        
     **Key Strategies for Success**
      Mastering the Block Blast game requires a combination of strategic planning and efficient execution.
 
@@ -151,19 +152,19 @@ sourcesCited: |
     The origins and development of puzzle games can be traced back to various historical influences. Notably, the printing press significantly enhanced the dissemination of puzzles, leading to popular collections such as Claude-Gaspar Bachet de Méziriac's "Problemes plaisans et delectables qui se font par les nombres" published in 1612, which included numerous number-based tricks.[20] Additionally, the evolution of recreational mathematics saw contributions from notable figures like Isaac Newton, who expressed ideas in puzzle formats. The modern puzzle genre was further shaped by significant milestones, including the introduction of crosswords in Britain in 1925 and their widespread adoption in newspapers. The game Tetris, developed by Alexey Pajitnov in 1985, is often credited with revolutionizing the puzzle game genre, drawing inspiration from traditional games like Pentomino and leading to massive sales across various platforms, including the Game Boy. Furthermore, the term "puzzle" has its roots in the 16th century, evolving from a verb to encompass a wide range of challenging games and problems that test ingenuity and logic.
 furtherReading: |
     **Historical Context of Puzzles**
-    The concept of puzzles has evolved significantly over the centuries. The word "puzzle" first appeared in print in 1599, used by Henry Porter in his play The Two Angry Women of Abington, where it described a state of bewilderment. By 1652, it was referenced as a difficult problem in Henry More's An Antidote Against Atheism, and it wasn't until 1781 that the term began to denote a challenge designed to test ingenuity, as seen in James Woodforde’s The Diary of a Country Parson.
+    * The concept of puzzles has evolved significantly over the centuries. The word "puzzle" first appeared in print in 1599, used by Henry Porter in his play The Two Angry Women of Abington, where it described a state of bewilderment. By 1652, it was referenced as a difficult problem in Henry More's An Antidote Against Atheism, and it wasn't until 1781 that the term began to denote a challenge designed to test ingenuity, as seen in James Woodforde’s The Diary of a Country Parson.
 
     **Early Collections and Recreational Mathematics**
-    The invention of the printing press facilitated the dissemination of puzzles, leading to popular collections such as Claude-Gaspar Bachet de Méziriac's Problemes plaisans et delectables qui se font par les nombres in 1612, which included various numerical puzzles. Additionally, Isaac Newton is known to have expressed mathematical concepts in puzzle format, showcasing the intersection of puzzles and recreational mathematics.
+    * The invention of the printing press facilitated the dissemination of puzzles, leading to popular collections such as Claude-Gaspar Bachet de Méziriac's Problemes plaisans et delectables qui se font par les nombres in 1612, which included various numerical puzzles. Additionally, Isaac Newton is known to have expressed mathematical concepts in puzzle format, showcasing the intersection of puzzles and recreational mathematics.
 
     **Puzzles in Literature**
-     Puzzles have also found a significant place in literature across various genres. Notable examples include the riddle contest between Gollum and Bilbo in J.R.R. Tolkien's The Hobbit, and the riddles posed by characters in works by authors such as Jane Austen, J.K. Rowling, and Jorge Luis Borges. These literary puzzles often serve as plot devices that heighten tension and engage readers in the narrative.
+    * Puzzles have also found a significant place in literature across various genres. Notable examples include the riddle contest between Gollum and Bilbo in J.R.R. Tolkien's The Hobbit, and the riddles posed by characters in works by authors such as Jane Austen, J.K. Rowling, and Jorge Luis Borges. These literary puzzles often serve as plot devices that heighten tension and engage readers in the narrative.
 
     **The Evolution of Crosswords**
-    The modern crossword puzzle has its roots in the early 20th century, with the first book of crosswords published in 1913. The introduction of cryptic crosswords in Britain in 1925 marked a significant evolution in puzzle design, contrasting with the straightforward clues favored in American crosswords until the 1960s. Crosswords remain a beloved feature in newspapers, continuing to challenge and entertain audiences worldwide.
+    * The modern crossword puzzle has its roots in the early 20th century, with the first book of crosswords published in 1913. The introduction of cryptic crosswords in Britain in 1925 marked a significant evolution in puzzle design, contrasting with the straightforward clues favored in American crosswords until the 1960s. Crosswords remain a beloved feature in newspapers, continuing to challenge and entertain audiences worldwide.
 
     **The Verb and Noun Usage of Puzzle**
-    The Oxford English Dictionary traces the verb "puzzle" back to the 16th century, with its earliest use documented in a work from the late 1590s. The evolution of its meaning reflects a broader cultural fascination with problem-solving and ingenuity, making puzzles a timeless form of entertainment. Categories such as lateral thinking puzzles highlight the diverse approaches to puzzle-solving that have emerged over time.
+    * The Oxford English Dictionary traces the verb "puzzle" back to the 16th century, with its earliest use documented in a work from the late 1590s. The evolution of its meaning reflects a broader cultural fascination with problem-solving and ingenuity, making puzzles a timeless form of entertainment. Categories such as lateral thinking puzzles highlight the diverse approaches to puzzle-solving that have emerged over time.
 officialWebsite: |
     The official website for the Block Blast game provides a comprehensive resource for players and fans. It features information about the game, including gameplay mechanics, updates, and upcoming events. Users can access support and contact information through the site, which is designed to enhance the overall gaming experience. The website also includes promotional content and advertisements related to the game, ensuring players stay informed about the latest features and enhancements available. Additionally, it outlines the terms of service and privacy policy relevant to the game's community and user interactions.
 ---
