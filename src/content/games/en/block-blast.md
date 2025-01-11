@@ -5,8 +5,8 @@ main:
   id: 5
   content: |
     Block Blast is a popular digital puzzle game that engages players through its strategic gameplay centered around an 8x8 grid. Players manipulate sets of colored blocks to clear rows or columns by filling them entirely, which promotes critical thinking and planning. Launched by Hungry Studio, the game has become notable for its blend of simplicity and depth, making it accessible to a wide audience while still challenging for seasoned gamers.
-  imgCard: "@/images/block-blast-card.png"
-  imgMain: "@/images/block-blast-main.png"
+  imgCard: "@/images/product-image-1.avif"
+  imgMain: "@/images/product-image-main-1.avif"
   imgAlt: "Screenshot from Block Blast game"
 tabs:
   - id: "tab-summary"
