@@ -1,3 +1,4 @@
+---
 title: "Epic Game X"
 description: "An immersive gaming experience awaits you."
 main:
@@ -96,3 +97,4 @@ faq:
     answer: "Yes, Epic Game X supports a full multiplayer mode."
   - question: "Are there microtransactions?"
     answer: "There are some optional cosmetic purchases, but they are not essential for game play."
+---
