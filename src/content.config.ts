@@ -143,6 +143,13 @@ const gamesCollection = defineCollection({
                 description: z.array(z.array(z.string())),
             })
         ).optional(),
+             descriptionList: z.array(
+            z.object({
+                title: z.string(),
+                subTitle: z.string(),
+            })
+        ).optional(),
+
          blueprints: z.object({
             first: image().optional(),
             second: image().optional(),
