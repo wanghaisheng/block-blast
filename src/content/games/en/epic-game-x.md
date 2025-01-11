@@ -5,8 +5,8 @@ main:
   id: 4
   content: |
     Step into the captivating world of Epic Game X, a revolutionary gaming experience that blends action, strategy, and storytelling into a single compelling narrative.
-  imgCard: "@/images/game-image-card.avif"
-  imgMain: "@/images/game-image-main.avif"
+  imgCard: "@/images/product-image-1.avif"
+  imgMain: "@/images/product-image-main.avif"
   imgAlt: "Screenshot from Epic Game X"
 tabs:
   - id: "tab-introduction"
