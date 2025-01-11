@@ -88,9 +88,6 @@ const insightsCollection = defineCollection({
   cardImageAlt: z.string(),
   }),
 });
-// https://docs.astro.build/en/guides/content-collections/#defining-collections
-import { z, defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders';
 
 const gamesCollection = defineCollection({
     loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/games" }),
