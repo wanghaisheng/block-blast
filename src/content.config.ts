@@ -115,6 +115,19 @@ const gamesCollection = defineCollection({
             btnTitle: z.string(),
             btnURL: z.string(),
         }).optional(),
+              specificationsLeft: z.array(
+            z.object({
+                title: z.string(),
+                subTitle: z.string(),
+            })
+        ).optional(),
+         specificationsRight: z.array(
+             z.object({
+                 title: z.string(),
+                 subTitle: z.string(),
+             })
+         ).optional(),
+
         gameplayMechanics: z.string().optional(),
         strategyAndTips: z.string().optional(),
         howToPlay: z.string().optional(),
