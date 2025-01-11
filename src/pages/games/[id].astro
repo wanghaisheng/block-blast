@@ -178,7 +178,7 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
                                 ))
                               }
                             </div>
-                            {game.data.specificationsRight ? (
+                             {game.data.specificationsRight ? (
                                 <div class="mt-6 max-w-md space-y-6 md:ml-auto md:mt-0">
                                   {game.data.specificationsRight.map((spec) => (
                                     <div>
@@ -291,7 +291,7 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
                        <div>
                            <h2> Frequently Asked Questions</h2>
                           {game.data.faq?.map((faqItem, index) => (
-                            <details key={index}>
+                            <details >
                               <summary>
                                 {faqItem.question}
                               </summary>
