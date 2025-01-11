@@ -1,10 +1,10 @@
 ---
 // Import section components
 import MainLayout from "@/layouts/MainLayout.astro";
-import productTabBtn from "@components/ui/buttons/productTabBtn.astro";
+import ProductTabBtn from "@components/ui/buttons/ProductTabBtn.astro";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import { SITE } from "@data/constants";
 
 // Global declaration for gsap animation library
@@ -14,10 +14,10 @@ declare global {
   }
 }
 
-// This gets the static paths for all the unique games
+// This gets the static paths for all the unique products
 
 export async function getStaticPaths() {
-  const gameEntries = await getCollection("games", ({ id }) =>
+    const gameEntries = await getCollection("games", ({ id }) =>
     id.startsWith("en/")
   );
   return gameEntries.map((game) => {
@@ -46,7 +46,7 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
         id="fadeText"
         class="mb-8 max-w-prose text-pretty font-light text-neutral-700 dark:text-neutral-300 sm:text-xl"
       >
-        {game.data.main.content}
+        {game.data.main?.content}
       </p>
     </div>
     <div
@@ -65,9 +65,9 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
       <div>
         <Image
           id="fadeInMoveRight"
-          src={game.data.main.imgMain}
+          src={game.data.main?.imgMain}
           class="w-[600px]"
-          alt={game.data.main.imgAlt}
+          alt={game.data.main?.imgAlt}
           format={"avif"}
           loading={"eager"}
         />
@@ -82,8 +82,8 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
       role="tablist"
     >
       {
-        game.data.tabs.map((tab, index) => (
-          <gameTabBtn
+        game.data.tabs?.map((tab, index) => (
+          <ProductTabBtn
             title={tab.title}
             id={tab.id}
             dataTab={tab.dataTab}
@@ -94,10 +94,10 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
     </nav>
 
     <div class="mt-12 md:mt-16">
-        {game.data.tabs.map((tab, index) => (
+        {game.data.tabs?.map((tab, index) => (
             <div id={tab.dataTab.slice(1)} class={index !== 0 ? "hidden" : ""} role="tabpanel">
                 <div class="mx-auto max-w-[85rem] px-4 pb-10 sm:px-6 lg:px-8 lg:pb-14">
-                     {/* Introduction Tab Content */}
+                    {/* Introduction Tab Content */}
                      {tab.title === "Introduction" && (
                         <div class="prose max-w-none text-neutral-700 dark:text-neutral-300">
                             {game.data.introduction}
@@ -110,24 +110,24 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
                                 <h2
                                   class="text-balance text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:leading-tight lg:text-4xl"
                                 >
-                                    {game.data.longDescription.title}
+                                    {game.data.longDescription?.title}
                                 </h2>
                                 <p
                                   class="mt-3 text-pretty text-neutral-600 dark:text-neutral-400"
                                 >
-                                    {game.data.longDescription.subTitle}
+                                    {game.data.longDescription?.subTitle}
                                 </p>
                                 <p class="mt-5">
                                   <PrimaryCTA
-                                    title={game.data.longDescription.btnTitle}
-                                    url={game.data.longDescription.btnURL}
+                                    title={game.data.longDescription?.btnTitle}
+                                    url={game.data.longDescription?.btnURL}
                                   />
                                 </p>
                             </div>
-            
+
                             <div class="space-y-6 lg:space-y-10">
                               {
-                                game.data.descriptionList.map((list) => (
+                                game.data.descriptionList?.map((list) => (
                                   <div class="flex">
                                     <div>
                                       <h3 class="text-base font-bold text-neutral-800 dark:text-neutral-200 sm:text-lg">
@@ -166,7 +166,7 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
                         <div class="grid w-full grid-cols-1 gap-x-16 md:grid-cols-2">
                             <div class="max-w-md space-y-6">
                               {
-                                game.data.specificationsLeft.map((spec) => (
+                                game.data.specificationsLeft?.map((spec) => (
                                   <div>
                                     <h3 class="block font-bold text-neutral-800 dark:text-neutral-200">
                                       {spec.title}
@@ -200,7 +200,7 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
                                           <table class="min-w-full divide-y divide-neutral-300 dark:divide-neutral-700">
                                             <thead>
                                             <tr>
-                                              {game.data.tableData[0].feature.map(
+                                              {game.data.tableData[0].feature?.map(
                                                 (header) => (
                                                   <th
                                                     scope="col"
@@ -213,7 +213,7 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
                                             </tr>
                                             </thead>
                                             <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
-                                            {game.data.tableData.map((row) =>
+                                            {game.data.tableData?.map((row) =>
                                                 row.description.map((rowData) => (
                                                     <tr>
                                                         {rowData.map((cellValue) => (
@@ -238,7 +238,7 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
                     {/* Blueprints Tab Content */}
                     {tab.title === "Blueprints" && (
                         <div class="mx-auto mb-20 flex w-full md:mb-28 2xl:w-4/5">
-                             {game.data.blueprints.first && (
+                             {game.data.blueprints?.first && (
                               <div
                                 class="relative left-12 top-12 z-10 overflow-hidden rounded-xl shadow-lg md:left-12 md:top-16 md:-ml-12 lg:ml-0"
                               >
@@ -251,7 +251,7 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
                               </div>
                               )}
 
-                            {game.data.blueprints.second && (
+                            {game.data.blueprints?.second && (
                                 <div class="relative right-12 overflow-hidden rounded-xl shadow-xl">
                                   <Image
                                     src={game.data.blueprints.second}
@@ -267,7 +267,7 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
                     {tab.title === "Reviews" && (
                         <div>
                           <h2> Customer Reviews</h2>
-                          {game.data.reviews.map(review =>(
+                          {game.data.reviews?.map((review) =>(
                             <div>
                                 <h3>{review.author}</h3>
                                 <p>{review.comment}</p>
@@ -277,21 +277,21 @@ const pageTitle: string = `${game.data.title} | ${SITE.title}`;
                         </div>
                     )}
                     {/* Gameplay Video Feeds Tab Content */}
-                    {tab.title === "Gameplay Video Feeds" && (
+                     {tab.title === "Gameplay Video Feeds" && (
                        <div>
-                            {game.data.gameplayVideoFeeds.map(video=>(
-                                <div class="aspect-w-16 aspect-h-9">
-                                    <iframe src={video.url} title="video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                </div>
-                            ))}
-                         </div>
-                    )}
+                           {game.data.gameplayVideoFeeds?.map((video)=>(
+                                 <div class="aspect-w-16 aspect-h-9">
+                                     <iframe src={video.url} title="video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                 </div>
+                             ))}
+                       </div>
+                     )}
                      {/* FAQ Tab Content */}
                       {tab.title === "FAQ" && (
                        <div>
                            <h2> Frequently Asked Questions</h2>
-                          {game.data.faq.map((faqItem, index) => (
-                            <details key={index}>
+                          {game.data.faq?.map((faqItem, index) => (
+                            <details >
                               <summary>
                                 {faqItem.question}
                               </summary>
