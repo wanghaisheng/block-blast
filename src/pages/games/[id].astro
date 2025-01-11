@@ -28,22 +28,10 @@ export async function getStaticPaths() {
     };
   });
 }
-export async function getStaticPaths() {
-    const productEntries = await getCollection("products", ({ id }) =>
-    id.startsWith("en/")
-  );
-  return productEntries.map((product) => {
-    const idWithoutLang = product.id.replace(/^en\//, ""); // Remove the "en/" prefix
-    return {
-      params: { id: idWithoutLang },
-      props: { product },
-    };
-  });
-}
-const { product } = Astro.props;
+
 const { game } = Astro.props;
 
-const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.title}`;
+const pageTitle: string = `${game.data.title} | ${SITE.title}`;
 ---
 
 <MainLayout title={pageTitle}>
@@ -58,7 +46,7 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
         id="fadeText"
         class="mb-8 max-w-prose text-pretty font-light text-neutral-700 dark:text-neutral-300 sm:text-xl"
       >
-        {product?.data.main?.content || game?.data.main?.content}
+        {game.data.main?.content}
       </p>
     </div>
     <div
@@ -68,18 +56,18 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
         <h1
           class="block text-4xl font-bold tracking-tighter text-neutral-800 dark:text-neutral-200 sm:text-5xl md:text-6xl lg:text-7xl"
         >
-          {product?.data.title || game?.data.title}
+          {game.data.title}
         </h1>
         <p class="text-lg text-neutral-600 dark:text-neutral-400">
-          {product?.data.description  || game?.data.description }
+          {game.data.description}
         </p>
       </div>
       <div>
         <Image
           id="fadeInMoveRight"
-            src={product?.data.main?.imgMain || game?.data.main?.imgMain}
+          src={game.data.main?.imgMain}
           class="w-[600px]"
-          alt={product?.data.main?.imgAlt || game?.data.main?.imgAlt}
+          alt={game.data.main?.imgAlt}
           format={"avif"}
           loading={"eager"}
         />
@@ -94,16 +82,7 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
       role="tablist"
     >
       {
-        product?.data.tabs?.map((tab, index) => (
-          <ProductTabBtn
-            title={tab.title}
-            id={tab.id}
-            dataTab={tab.dataTab}
-            first={index === 0}
-          />
-        ))
-          ||
-        game?.data.tabs?.map((tab, index) => (
+        game.data.tabs?.map((tab, index) => (
           <ProductTabBtn
             title={tab.title}
             id={tab.id}
@@ -115,13 +94,13 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
     </nav>
 
     <div class="mt-12 md:mt-16">
-        {(product?.data.tabs || game?.data.tabs)?.map((tab, index) => (
+        {game.data.tabs?.map((tab, index) => (
             <div id={tab.dataTab.slice(1)} class={index !== 0 ? "hidden" : ""} role="tabpanel">
                 <div class="mx-auto max-w-[85rem] px-4 pb-10 sm:px-6 lg:px-8 lg:pb-14">
                    {/* Introduction Tab Content */}
                      {tab.title === "Introduction" && (
                         <div class="prose max-w-none text-neutral-700 dark:text-neutral-300">
-                            {product?.data.introduction || game?.data.introduction}
+                            {game.data.introduction}
                         </div>
                     )}
                      {/* Description Tab Content */}
@@ -131,24 +110,24 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
                                 <h2
                                   class="text-balance text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:leading-tight lg:text-4xl"
                                 >
-                                    {product?.data.longDescription?.title || game?.data.longDescription?.title}
+                                    {game.data.longDescription?.title}
                                 </h2>
                                 <p
                                   class="mt-3 text-pretty text-neutral-600 dark:text-neutral-400"
                                 >
-                                    {product?.data.longDescription?.subTitle || game?.data.longDescription?.subTitle}
+                                    {game.data.longDescription?.subTitle}
                                 </p>
                                 <p class="mt-5">
                                   <PrimaryCTA
-                                    title={product?.data.longDescription?.btnTitle || game?.data.longDescription?.btnTitle}
-                                      url={product?.data.longDescription?.btnURL || game?.data.longDescription?.btnURL}
+                                    title={game.data.longDescription?.btnTitle}
+                                    url={game.data.longDescription?.btnURL}
                                   />
                                 </p>
                             </div>
 
                             <div class="space-y-6 lg:space-y-10">
                               {
-                                (product?.data.descriptionList || game?.data.descriptionList)?.map((list) => (
+                                game.data.descriptionList?.map((list) => (
                                   <div class="flex">
                                     <div>
                                       <h3 class="text-base font-bold text-neutral-800 dark:text-neutral-200 sm:text-lg">
@@ -167,19 +146,19 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
                     {/* Gameplay Mechanics Tab Content */}
                      {tab.title === "Gameplay Mechanics" && (
                         <div class="prose max-w-none text-neutral-700 dark:text-neutral-300">
-                            {product?.data.gameplayMechanics || game?.data.gameplayMechanics}
+                            {game.data.gameplayMechanics}
                         </div>
                      )}
                     {/* Strategy and Tips Tab Content */}
                      {tab.title === "Strategy and Tips" && (
                        <div class="prose max-w-none text-neutral-700 dark:text-neutral-300">
-                            {product?.data.strategyAndTips || game?.data.strategyAndTips}
+                            {game.data.strategyAndTips}
                         </div>
                     )}
                     {/* How to Play Tab Content */}
                       {tab.title === "How to Play" && (
                         <div class="prose max-w-none text-neutral-700 dark:text-neutral-300">
-                           {product?.data.howToPlay || game?.data.howToPlay}
+                           {game.data.howToPlay}
                         </div>
                     )}
                     {/* Specifications Tab Content */}
@@ -187,7 +166,7 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
                         <div class="grid w-full grid-cols-1 gap-x-16 md:grid-cols-2">
                             <div class="max-w-md space-y-6">
                               {
-                                (product?.data.specificationsLeft || game?.data.specificationsLeft)?.map((spec) => (
+                                game.data.specificationsLeft?.map((spec) => (
                                   <div>
                                     <h3 class="block font-bold text-neutral-800 dark:text-neutral-200">
                                       {spec.title}
@@ -199,9 +178,9 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
                                 ))
                               }
                             </div>
-                             {product?.data.specificationsRight || game?.data.specificationsRight ? (
+                            {game.data.specificationsRight ? (
                                 <div class="mt-6 max-w-md space-y-6 md:ml-auto md:mt-0">
-                                  {(product?.data.specificationsRight || game?.data.specificationsRight)?.map((spec) => (
+                                  {game.data.specificationsRight.map((spec) => (
                                     <div>
                                       <h3 class="block font-bold text-neutral-800 dark:text-neutral-200">
                                         {spec.title}
@@ -212,7 +191,7 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
                                     </div>
                                   ))}
                                 </div>
-                            ) :  (product?.data.tableData || game?.data.tableData) ? (
+                            ) :  game.data.tableData ? (
                                 <div class="mt-6 space-y-6 md:ml-auto md:mt-0">
                                   <div class="flex flex-col">
                                     <div class="-m-1.5 overflow-x-auto">
@@ -221,7 +200,7 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
                                           <table class="min-w-full divide-y divide-neutral-300 dark:divide-neutral-700">
                                             <thead>
                                             <tr>
-                                              {(product?.data.tableData || game?.data.tableData)?.[0].feature?.map(
+                                              {game.data.tableData?.[0].feature?.map(
                                                 (header) => (
                                                   <th
                                                     scope="col"
@@ -234,7 +213,7 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
                                             </tr>
                                             </thead>
                                             <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
-                                            {(product?.data.tableData || game?.data.tableData)?.map((row) =>
+                                            {game.data.tableData?.map((row) =>
                                                 row.description.map((rowData) => (
                                                     <tr>
                                                         {rowData.map((cellValue) => (
@@ -259,12 +238,12 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
                     {/* Blueprints Tab Content */}
                      {tab.title === "Blueprints" && (
                         <div class="mx-auto mb-20 flex w-full md:mb-28 2xl:w-4/5">
-                              {(product?.data.blueprints?.first || game?.data.blueprints?.first) && (
+                              {game.data.blueprints?.first && (
                                 <div
                                   class="relative left-12 top-12 z-10 overflow-hidden rounded-xl shadow-lg md:left-12 md:top-16 md:-ml-12 lg:ml-0"
                                 >
                                   <Image
-                                    src={product?.data.blueprints?.first || game?.data.blueprints?.first}
+                                    src={game.data.blueprints.first}
                                     class="h-full w-full object-cover object-center"
                                     alt="Blueprint Illustration"
                                     format={"avif"}
@@ -272,10 +251,10 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
                                 </div>
                               )}
 
-                             {(product?.data.blueprints?.second || game?.data.blueprints?.second) && (
+                             {game.data.blueprints?.second && (
                                   <div class="relative right-12 overflow-hidden rounded-xl shadow-xl">
                                     <Image
-                                      src={product?.data.blueprints?.second || game?.data.blueprints?.second}
+                                      src={game.data.blueprints.second}
                                       class="h-full w-full object-cover object-center"
                                       alt="Blueprint Illustration"
                                       format={"avif"}
@@ -288,7 +267,7 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
                     {tab.title === "Reviews" && (
                         <div>
                           <h2> Customer Reviews</h2>
-                          {(product?.data.reviews || game?.data.reviews)?.map((review) =>(
+                          {game.data.reviews?.map((review) =>(
                             <div>
                                 <h3>{review.author}</h3>
                                 <p>{review.comment}</p>
@@ -300,7 +279,7 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
                      {/* Gameplay Video Feeds Tab Content */}
                     {tab.title === "Gameplay Video Feeds" && (
                        <div>
-                           {(product?.data.gameplayVideoFeeds || game?.data.gameplayVideoFeeds)?.map((video)=>(
+                           {game.data.gameplayVideoFeeds?.map((video)=>(
                                  <div class="aspect-w-16 aspect-h-9">
                                      <iframe src={video.url} title="video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                  </div>
@@ -311,7 +290,7 @@ const pageTitle: string = `${product?.data.title || game?.data.title} | ${SITE.t
                       {tab.title === "FAQ" && (
                        <div>
                            <h2> Frequently Asked Questions</h2>
-                          {(product?.data.faq || game?.data.faq)?.map((faqItem, index) => (
+                          {game.data.faq?.map((faqItem, index) => (
                             <details key={index}>
                               <summary>
                                 {faqItem.question}
